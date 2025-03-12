@@ -27,6 +27,7 @@ public class CoinCointerUI : MonoBehaviour
     {
         toUpdate.SetText($"{score}");
         coinTextContainer.DOLocalMoveY(containerInitPosition + moveAmount, duration);
+        coinTextContainer.DOLocalMoveY(containerInitPosition + moveAmount, duration).SetEase(animationCurve);
         StartCoroutine(ResetCoinContainer(score));
     }
 
@@ -35,7 +36,6 @@ public class CoinCointerUI : MonoBehaviour
         yield return new WaitForSeconds(duration);
         current.SetText($"{score}");
         Vector3 localPosition = coinTextContainer.localPosition;
-        coinTextContainer.DOLocalMoveY(containerInitPosition + moveAmount, duration).SetEase(animationCurve);
         coinTextContainer.localPosition = new Vector3(localPosition.x, containerInitPosition, localPosition.z);
     }
 }
